@@ -5,8 +5,11 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
-
 app.use(cors());
+
+const search = require("./routes/spotify")
+
+app.use("", search)
 
 app.get('/', (req, res) => {
   res.send('Hello, Express App!');
