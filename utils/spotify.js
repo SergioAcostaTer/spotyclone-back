@@ -1,13 +1,10 @@
 const axios = require("axios");
-const buffer = require("buffer");
-const Buffer = buffer.Buffer;
 
 require("dotenv").config()
 
-const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
-const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
-
 async function getSpotifyAccessToken() {
+  const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
+  const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 
   if (!SPOTIFY_CLIENT_ID || !SPOTIFY_CLIENT_SECRET) {
     console.error("Spotify client credentials are missing.");
