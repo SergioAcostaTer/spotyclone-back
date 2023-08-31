@@ -8,7 +8,7 @@ const port = 3000;
 app.use(cors());
 
 const { searchSpotify, mmssToSeconds } = require("./utils/spotify");
-const { getColorFromURL } = require("color-thief-node");
+// const { getColorFromURL } = require("color-thief-node");
 
 
 
@@ -36,7 +36,7 @@ app.get("/search/:query", async (req, res) => {
           duration: item.duration_ms,
           popularity: item.popularity,
           type: "track",
-          color: `#${color}`,
+          // color: `#${color}`,
         };
       })
     );
