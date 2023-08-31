@@ -1,13 +1,14 @@
-const cors = require("cors"); // Import the cors package
+const express = require("express");
+const cors = require("cors");
 const app = express();
-const PORT = process.env.PORT || 3000;
-
+const PORT = process.env.PORT || 4000;
 require("dotenv").config();
 
 app.use(express.json());
 
 app.use(cors());
 
+const axios = require("axios");
 
 // const { searchSpotify, mmssToSeconds } = require("./utils/spotify");
 
