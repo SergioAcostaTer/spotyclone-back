@@ -1,4 +1,3 @@
-require("dotenv").config()
 const express = require('express');
 const cors = require('cors');
 
@@ -8,8 +7,6 @@ const port = 3000;
 app.use(cors());
 
 const { searchSpotify, mmssToSeconds } = require("./utils/spotify");
-// const { getColorFromURL } = require("color-thief-node");
-
 
 
 app.get("/search/:query", async (req, res) => {
@@ -36,7 +33,7 @@ app.get("/search/:query", async (req, res) => {
           duration: item.duration_ms,
           popularity: item.popularity,
           type: "track",
-          // color: `#${color}`,
+          color: `#${color}`,
         };
       })
     );
@@ -52,6 +49,7 @@ app.get("/search/:query", async (req, res) => {
 
 
 const yt = require("ytsr");
+// const { getColorFromURL } = require("color-thief-node");
 
 app.get("/search/:title/:artist/:time", async (req, res) => {
   const { title, artist, time } = req.params;
