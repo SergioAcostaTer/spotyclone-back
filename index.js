@@ -1,13 +1,15 @@
-const express = require('express');
-const cors = require('cors');
-
+const cors = require("cors"); // Import the cors package
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
+
+require("dotenv").config();
+
+app.use(express.json());
 
 app.use(cors());
 
-const { searchSpotify, mmssToSeconds } = require("./utils/spotify");
 
+const { searchSpotify, mmssToSeconds } = require("./utils/spotify");
 
 app.get("/search/:query", async (req, res) => {
   const { query } = req.params;
@@ -47,18 +49,12 @@ app.get("/search/:query", async (req, res) => {
   }
 });
 
-
 const yt = require("ytsr");
-// const { getColorFromURL } = require("color-thief-node");
 
 app.get("/search/:title/:artist/:time", async (req, res) => {
   const { title, artist, time } = req.params;
 
   try {
-    // const filters = await yt.getFilters(`${title} ${artist}`);
-    console.log(`${title} ${artist}`)
-    // const filter = await filters.get("Type").get("Video");
-
     const searchOptions = {
       limit: 10,
     };
@@ -98,11 +94,10 @@ app.get("/search/:title/:artist/:time", async (req, res) => {
   }
 });
 
-
-app.get('/', (req, res) => {
-  res.send('Hello, Express App!');
+app.get("/", (req, res) => {
+  res.send("Hello, Express App!");
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
